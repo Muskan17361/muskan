@@ -14,13 +14,6 @@ Welcome to the Japan Tourism Website repository! This project aims to develop a 
 - Find practical travel tips, including visa requirements, currency exchange, transportation options, and more.
 - Engage with fellow travelers through reviews, ratings, and community discussions.
 
-## Technologies Used
-
-- **Frontend:** HTML, CSS, JavaScript
-- **Backend:** Node.js, Express.js
-- **Database:** MongoDB
-- **Deployment:** Heroku
-
 ## How to Contribute
 
 We welcome contributions from the community to help improve and enhance the Japan Tourism Website. Here's how you can contribute:

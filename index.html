@@ -1,61 +1,283 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Japan Tourism</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guidy — Japan Travel Guide</title>
+  <meta name="description" content="Guidy: Your friendly Japan travel guide — destinations, itineraries, tips and planning tools.">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --accent: #1f8dd6;
+      --accent-dark: #166aa8;
+      --muted: #6b7280;
+      --card: #ffffff;
+      --bg: #f7fafc;
+      --glass: rgba(255,255,255,0.6);
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#f8fbfd 0%,var(--bg) 100%);color:#0f1724;line-height:1.5}
+
+    header{backdrop-filter: blur(6px);position:sticky;top:0;z-index:40;background:rgba(255,255,255,0.6);border-bottom:1px solid rgba(15,23,36,0.06)}
+    .container{max-width:1100px;margin:0 auto;padding:1rem}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .brand{display:flex;align-items:center;gap:.65rem;font-weight:700}
+    .brand .logo{width:44px;height:44px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent-dark));color:white;font-size:1.1rem}
+    nav ul{list-style:none;display:flex;gap:1rem;margin:0;padding:0;align-items:center}
+    a{color:inherit;text-decoration:none}
+    .btn{background:var(--accent);color:white;padding:.55rem .9rem;border-radius:10px;font-weight:600;border:none;cursor:pointer}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:2rem;align-items:center;padding:2.25rem 0}
+    .hero-left h1{font-size:2.1rem;margin:0 0 .5rem}
+    .hero-left p{color:var(--muted);margin:0 0 1.25rem}
+    .search{display:flex;gap:.5rem;align-items:center}
+    .search input{flex:1;padding:.8rem .9rem;border-radius:10px;border:1px solid rgba(15,23,36,0.08);outline:none}
+    .hero-right{position:relative}
+    .hero-card{background:linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,255,255,0.85));padding:1rem;border-radius:14px;box-shadow:0 8px 30px rgba(15,23,36,0.06)}
+    .small-list{display:flex;flex-direction:column;gap:.65rem}
+
+    /* Destinations */
+    .section{padding:2rem 0}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+    .card{background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 6px 20px rgba(15,23,36,0.05)}
+    .card img{width:100%;height:150px;object-fit:cover;display:block}
+    .card .card-body{padding:1rem}
+    .chip{display:inline-block;padding:.25rem .6rem;border-radius:999px;font-size:.8rem;background:rgba(15,23,36,0.04)}
+
+    /* Itinerary */
+    .itinerary{display:grid;grid-template-columns:1fr 320px;gap:1rem}
+    .day{padding:.9rem;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfdff);border:1px solid rgba(15,23,36,0.04)}
+
+    footer{padding:2rem 0;border-top:1px solid rgba(15,23,36,0.04);margin-top:2rem}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .hero-right{order: -1}
+      .itinerary{grid-template-columns:1fr}
+    }
+
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Japan Tourism</h1>
-            <nav>
-                <ul>
-                    <li><a href="#destinations">Destinations</a></li>
-                    <li><a href="#things-to-do">Things to Do</a></li>
-                    <li><a href="#events">Events</a></li>
-                    <li><a href="#travel-tips">Travel Tips</a></li>
-                </ul>
-            </nav>
+
+<header>
+  <div class="container nav">
+    <div class="brand">
+      <div class="logo">G</div>
+      <div>
+        <div style="font-size:.95rem">Guidy</div>
+        <div style="font-size:.75rem;color:var(--muted);margin-top:2px">Japan travel guide</div>
+      </div>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="#destinations">Destinations</a></li>
+        <li><a href="#itineraries">Itineraries</a></li>
+        <li><a href="#tips">Travel Tips</a></li>
+        <li><a href="#contact" class="btn">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <div class="hero-left">
+      <h1>Discover Japan with Guidy</h1>
+      <p>From neon-lit Tokyo streets to serene Kyoto temples — curated routes, local tips, hidden cafés, and seasonal highlights.</p>
+
+      <div class="search">
+        <input type="search" placeholder="Search cities, attractions, food... (e.g., Kyoto temple)">
+        <button class="btn">Search</button>
+      </div>
+
+      <div style="margin-top:1rem;display:flex;gap:.5rem;flex-wrap:wrap">
+        <span class="chip">Tokyo</span>
+        <span class="chip">Kyoto</span>
+        <span class="chip">Osaka</span>
+        <span class="chip">Hokkaido</span>
+        <span class="chip">Okinawa</span>
+      </div>
+
+    </div>
+
+    <aside class="hero-right">
+      <div class="hero-card">
+        <h3 style="margin:0 0 .4rem">Quick trip planner</h3>
+        <p style="margin:0 0 .9rem;color:var(--muted);font-size:.95rem">Pick duration and interests — Guidy suggests a compact itinerary.</p>
+        <div style="display:flex;gap:.5rem">
+          <select aria-label="duration" style="padding:.5rem;border-radius:8px;border:1px solid rgba(15,23,36,0.06);flex:1">
+            <option>3 days</option>
+            <option selected>5 days</option>
+            <option>7 days</option>
+            <option>10+ days</option>
+          </select>
+          <button class="btn">Plan</button>
         </div>
-    </header>
-    
-    <main>
-        <section id="destinations">
-            <div class="container">
-                <h2>Popular Destinations</h2>
-                <!-- Destination cards with images and descriptions -->
-            </div>
-        </section>
-        
-        <section id="things-to-do">
-            <div class="container">
-                <h2>Things to Do</h2>
-                <!-- Activities and experiences with images and descriptions -->
-            </div>
-        </section>
-        
-        <section id="events">
-            <div class="container">
-                <h2>Upcoming Events</h2>
-                <!-- Event listings with dates, locations, and descriptions -->
-            </div>
-        </section>
-        
-        <section id="travel-tips">
-            <div class="container">
-                <h2>Travel Tips</h2>
-                <!-- Practical advice and tips for travelers -->
-            </div>
-        </section>
-    </main>
-    
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Japan Tourism. All rights reserved.</p>
+
+        <div style="margin-top:.9rem;display:flex;gap:.6rem;align-items:center;">
+          <div style="flex:1">
+            <div style="font-size:.85rem;color:var(--muted)">Recommended for you</div>
+            <div style="font-weight:600">Tokyo → Hakone → Kyoto</div>
+          </div>
+          <img src="https://images.unsplash.com/photo-1549692520-acc6669e2f0c?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=7a2f2d7e4f2b7f9c6e2d5f8c1a9b3d4e" alt="mountain" style="width:64px;height:64px;border-radius:10px;object-fit:cover">
         </div>
-    </footer>
+      </div>
+    </aside>
+  </section>
+
+  <section id="destinations" class="section">
+    <h2 style="margin:0 0 .6rem">Popular destinations</h2>
+    <p style="color:var(--muted);margin:0 0 1rem">Hand-picked places across Japan with what to see and when to go.</p>
+
+    <div class="grid">
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1549693578-d683be217e58?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=9a0c0b0c8d7f6e2b5c3d1a" alt="Tokyo skyline">
+        <div class="card-body">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <h3 style="margin:0;font-size:1.05rem">Tokyo</h3>
+            <span class="chip">Metro hub</span>
+          </div>
+          <p style="color:var(--muted);margin:.5rem 0 0;font-size:.95rem">Neon nightlife, shrines, shopping in Shibuya and Harajuku, Michelin ramen, and contemporary culture.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1526481280698-6f1b98b9a616?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=1f2a3b4c5d6e7f8a9b0c" alt="Kyoto temple">
+        <div class="card-body">
+          <h3 style="margin:0 0 .35rem">Kyoto</h3>
+          <p style="color:var(--muted);margin:0;font-size:.95rem">Timeless temples, tea houses, geisha districts and seasonal cherry blossoms.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=0f1a2b3c4d5e6f7a8b9c" alt="Osaka street food">
+        <div class="card-body">
+          <h3 style="margin:0 0 .35rem">Osaka</h3>
+          <p style="color:var(--muted);margin:0;font-size:.95rem">Food capital — takoyaki, okonomiyaki, lively Dotonbori and friendly locals.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=abcdef1234567890" alt="Hokkaido">
+        <div class="card-body">
+          <h3 style="margin:0 0 .35rem">Hokkaido</h3>
+          <p style="color:var(--muted);margin:0;font-size:.95rem">Wider skies, lavender fields, winter skiing and fresh seafood.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="itineraries" class="section">
+    <h2 style="margin:0 0 .6rem">Sample 5-day itinerary</h2>
+    <div class="itinerary">
+      <div>
+        <div class="day">
+          <strong>Day 1 — Tokyo: Arrival & Shinjuku</strong>
+          <p style="color:var(--muted);margin:.5rem 0 0">Arrive in Narita/Haneda, get a Suica card, explore Shinjuku Gyoen and dinner in Omoide Yokocho.</p>
+        </div>
+        <div style="height:12px"></div>
+        <div class="day">
+          <strong>Day 2 — Tokyo: Culture & Modernity</strong>
+          <p style="color:var(--muted);margin:.5rem 0 0">Meiji Shrine, Harajuku crepes, teamLab Borderless (or Planets), then Shibuya Crossing at dusk.</p>
+        </div>
+        <div style="height:12px"></div>
+        <div class="day">
+          <strong>Day 3 — Hakone: Onsen & Views</strong>
+          <p style="color:var(--muted);margin:.5rem 0 0">Ride the Romancecar or Shinkansen + local transport, take a lake cruise and relax in an onsen (public onsen etiquette applies).</p>
+        </div>
+        <div style="height:12px"></div>
+        <div class="day">
+          <strong>Day 4 — Kyoto: Temples & Gion</strong>
+          <p style="color:var(--muted);margin:.5rem 0 0">Fushimi Inari, Kiyomizu-dera, stroll through Gion and look for traditional tea houses.</p>
+        </div>
+        <div style="height:12px"></div>
+        <div class="day">
+          <strong>Day 5 — Osaka: Food & Departure</strong>
+          <p style="color:var(--muted);margin:.5rem 0 0">Morning in Dotonbori, lunch of takoyaki, head to Kansai/Itami airport for departure or extend to Hiroshima/Nara.</p>
+        </div>
+      </div>
+
+      <aside style="position:relative">
+        <div class="day">
+          <strong>Travel essentials</strong>
+          <ul style="margin:.5rem 0 0;padding-left:1rem;color:var(--muted)">
+            <li>JR Pass: only worth it if you take multiple long-distance trains (reserve before arrival).</li>
+            <li>Cash: many places accept cards but smaller shops and shrines prefer cash.</li>
+            <li>Etiquette: quiet voice on trains, remove shoes when requested, queued boarding.</li>
+          </ul>
+        </div>
+
+        <div style="height:12px"></div>
+
+        <div class="day">
+          <strong>Map: Japan overview</strong>
+          <div style="margin-top:.6rem;">
+            <!-- Embedding a simple map focused on Japan. Replace with your map API if needed. -->
+            <iframe title="Map of Japan" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12899787.42257246!2d128.14712991107005!3d36.204824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3565b0a5b4b7c4ff%3A0x0!2z44CSMzAwMDA!5e0!3m2!1sen!2sus!4v1600000000000!5m2!1sen!2sus" width="100%" height="200" style="border:0;border-radius:8px" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="tips" class="section">
+    <h2 style="margin:0 0 .6rem">Travel tips & seasonal highlights</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem">
+      <div class="card" style="padding:1rem">
+        <h4 style="margin:0 0 .4rem">Best time to visit</h4>
+        <p style="color:var(--muted);margin:0">Spring (late Mar–Apr) for cherry blossoms, autumn (Oct–Nov) for foliage. Summer festivals and winter ski season in Hokkaido.</p>
+      </div>
+      <div class="card" style="padding:1rem">
+        <h4 style="margin:0 0 .4rem">Food to try</h4>
+        <p style="color:var(--muted);margin:0">Sushi, ramen, udon, kaiseki, okonomiyaki, wagashi (traditional sweets) and regional specialties.</p>
+      </div>
+      <div class="card" style="padding:1rem">
+        <h4 style="margin:0 0 .4rem">Connectivity</h4>
+        <p style="color:var(--muted);margin:0">Rent a pocket Wi‑Fi or buy a local SIM. Many stations have luggage forwarding services (takkyubin).</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <h2 style="margin:0 0 .6rem">Contact & custom plans</h2>
+    <p style="color:var(--muted);margin:0 0 1rem">Want a tailor-made trip? Send a message and we’ll create a custom itinerary.</p>
+
+    <form action="#" onsubmit="alert('Form demo — replace action to send data.');return false;" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem">
+      <input required placeholder="Your name" style="padding:.8rem;border-radius:10px;border:1px solid rgba(15,23,36,0.06)">
+      <input required placeholder="Email" type="email" style="padding:.8rem;border-radius:10px;border:1px solid rgba(15,23,36,0.06)">
+      <input placeholder="Travel dates (optional)" style="padding:.8rem;border-radius:10px;border:1px solid rgba(15,23,36,0.06)">
+      <select style="padding:.8rem;border-radius:10px;border:1px solid rgba(15,23,36,0.06)">
+        <option>Interests: Culture</option>
+        <option>Nature & Outdoors</option>
+        <option>Food & Nightlife</option>
+        <option>Relax & Onsen</option>
+      </select>
+      <textarea placeholder="Tell us what you'd like" rows="4" style="padding:.8rem;border-radius:10px;border:1px solid rgba(15,23,36,0.06);grid-column:1/-1"></textarea>
+      <div style="grid-column:1/-1;text-align:right"><button class="btn">Send request</button></div>
+    </form>
+
+  </section>
+
+  <footer>
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
+      <div>
+        <strong>Guidy</strong>
+        <div style="color:var(--muted);font-size:.9rem">Japan travel guide • sample demo site</div>
+      </div>
+      <div style="color:var(--muted);font-size:.9rem">© Guidy — created with ❤️. Images from Unsplash.</div>
+    </div>
+  </footer>
+
+</main>
+
 </body>
 </html>

@@ -1,6 +1,3 @@
-Certainly! Here's a sample introductory section for a repository:
-
----
 
 # Japan Tourism Website
 
